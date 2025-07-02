@@ -30,9 +30,8 @@ function compilaSass(){
         .pipe(gulp.dest('./build/styles'));
 }
 
-exports.compilaSass = compilaSass;
-exports.comprimeJS = comprimeJS;
-exports.comprimeImagens = comprimeImagens;
-exports.watch = function(){
-    gulp.watch('./source/styles/*.scss', gulp.series(compilaSass))
+exports.default = function(){
+    gulp.watch('./source/scripts/*.js', { ignoreInitial: false }, gulp.series(comprimeJS));
+    gulp.watch('./source/images/*', { ignoreInitial: false }, gulp.series(comprimeImagens));
+    gulp.watch('./source/styles/*.scss', { ignoreInitial: false }, gulp.series(compilaSass));
 }
